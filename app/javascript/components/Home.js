@@ -10,6 +10,7 @@ export default class Home extends Component {
 
   handleSuccessfullAuth(data) {
     // TODO update parent component
+    this.props.handleLogin(data);
     this.props.history.push("/dashboard");
   }
 
