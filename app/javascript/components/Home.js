@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Registration from "./auth/Registration";
 import Login from "./auth/Login";
+import axios from 'axios';
 
 export default class Home extends Component {
   constructor(props) {
@@ -17,7 +18,14 @@ export default class Home extends Component {
   }
 
   handleLogOutClick() {
-    this.props.handleLogOut();
+    axios
+    .delete("http://localhost:3000/logout", { withCredentials: true})
+    .then(response => {
+      this.props.handleLogOut();
+    })
+    .catch(error => {
+      console.log("logout error", error);
+    });
   }
 
   render() {
