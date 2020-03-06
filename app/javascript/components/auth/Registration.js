@@ -25,7 +25,8 @@ export default class Registration extends Component {
 
   handleSubmit(event) {
     axios
-    .post("http://localhost:3000/registrations", {
+    .post("http://localhost:3000/registrations", 
+    {
       user: {
         email: this.state.email,
         password: this.state.password,
@@ -36,7 +37,7 @@ export default class Registration extends Component {
     { withCredentials: true }
     ).then(response => {
       if (response.data.status === 'created') {
-        this.props.handleSuccessfullAuth(response.data)
+        this.props.handleSuccessfulAuth(response.data)
       }
     }).catch(error => {
       console.log("registration error", error);
