@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 export default class Registration extends Component {
   
@@ -23,7 +24,21 @@ export default class Registration extends Component {
   }
 
   handleSubmit(event) {
-    console.log("form submitted");
+    axios
+    .post("http://localhost:3000/registrations", {
+      user: {
+        email: this.state.email,
+        password: this.state.password,
+        password_confirmation: this.state.password_confirmation
+      }
+    },
+    
+    { withCredentials: true }
+    ).then(response => {
+      console.log("registration respond", response);
+    }).catch(error => {
+      console.log("registration error", error);
+    });
     event.preventDefault();
   }
   

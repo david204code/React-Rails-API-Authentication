@@ -1,4 +1,4 @@
-class RegistrationController < ApplicationController 
+class RegistrationsController < ApplicationController 
   #post request
   def create
     user = User.create!(
